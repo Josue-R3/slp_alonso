@@ -1,10 +1,29 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
+"use client";
+import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
-const Layout = ({ children }) => {
-    return <Fragment>{children}</Fragment>;
+const Header = () => {
+  return (
+    <header className="header">
+      {/* Menú Hamburguesa + Texto */}
+      <div className="header-menu">
+        <Bars3Icon className="header-menu-icon" />
+        <span className="header-menu-text">Menu</span>
+      </div>
+
+      {/* Logo */}
+      <div>
+        <Link href="/" className="header-logo">
+          Alonso Vasquez
+        </Link>
+      </div>
+
+      {/* Icono de búsqueda */}
+      <div>
+        <MagnifyingGlassIcon className="header-search" />
+      </div>
+    </header>
+  );
 };
-Layout.propTypes = {
-    children: PropTypes.node.isRequired,
-};
-export default Layout;
+
+export default Header;

@@ -1,0 +1,20 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "companyName": "Empresa Ejemplo 1",
+      "contentType": "Fotografía",
+      "photoType": "Retrato",
+      "imageUrl": "/img/portfolio/imagen1.jpg",
+      "categories": ["Retrato", "Clásico"]
+    },
+    {
+      "id": 2,
+      "companyName": "Empresa Ejemplo 2",
+      "contentType": "Fotografía",
+      "photoType": "Paisaje",
+      "imageUrl": "/img/portfolio/imagen2.jpg",
+      "categories": ["Paisaje", "Moderno"]
+    }
+  ]
+}

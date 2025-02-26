@@ -1,0 +1,124 @@
+/* ============================= */
+/* 📌 Contenedor del Slider */
+/* ============================= */
+.intro-slider-wrap {
+  background-color: #fff;
+  padding: 0 15px;
+  position: relative;
+}
+
+/* ============================= */
+/* 📌 Swiper Pagination */
+/* ============================= */
+.intro-slider-wrap .swiper-pagination {
+  position: absolute;
+  bottom: 40px;
+}
+
+/* ============================= */
+/* 📌 Estructura del Slide */
+/* ============================= */
+.intro-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  padding: 50px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ============================= */
+/* 📌 Contenido del Slide */
+/* ============================= */
+.intro-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+/* 📌 Subtítulo */
+.intro-content .sub-title {
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  margin-bottom: 20px;
+}
+
+/* 📌 Título */
+.intro-content .title {
+  font-size: 44px;
+  font-family: "Libre Baskerville", serif;
+  margin-bottom: 20px;
+}
+
+/* 📌 Descripción */
+.intro-content .desc p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 📌 Botón */
+.intro-content .intro-btn {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: white;
+  text-decoration: underline;
+  transition: 0.3s;
+}
+.intro-content .intro-btn:hover {
+  color: #ccc;
+}
+
+/* ============================= */
+/* 📌 Swiper Animaciones */
+/* ============================= */
+.swiper-slide-active .intro-content > * {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* ============================= */
+/* 📌 Responsive Design */
+/* ============================= */
+@media only screen and (max-width: 991px) {
+  .intro-section {
+    height: 500px;
+  }
+  .intro-content .title {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .intro-section {
+    height: 450px;
+  }
+  .intro-content .title {
+    font-size: 28px;
+  }
+  .intro-content .sub-title {
+    font-size: 14px;
+    letter-spacing: 5px;
+  }
+  .intro-content .intro-btn {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .intro-section {
+    height: 400px;
+  }
+  .intro-content .title {
+    font-size: 24px;
+  }
+  .intro-content .sub-title {
+    font-size: 12px;
+    letter-spacing: 4px;
+  }
+}
