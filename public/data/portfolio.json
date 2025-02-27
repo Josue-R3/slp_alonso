@@ -2,19 +2,107 @@
   "portfolio": [
     {
       "id": 1,
-      "companyName": "Empresa Ejemplo 1",
+      "companyName": "Proyecto 1",
       "contentType": "Fotografía",
-      "photoType": "Retrato",
-      "imageUrl": "/img/portfolio/imagen1.jpg",
-      "categories": ["Retrato", "Clásico"]
+      "photoType": "Evento",
+      "imageUrl": "/img/_DSC2216.webp",
+      "categories": ["Evento"]
     },
     {
       "id": 2,
-      "companyName": "Empresa Ejemplo 2",
+      "companyName": "Proyecto 2",
+      "contentType": "Fotografía",
+      "photoType": "Persona",
+      "imageUrl": "/img/_MG_0381.webp",
+      "categories": ["Persona"]
+    },
+    {
+      "id": 3,
+      "companyName": "Proyecto 3",
+      "contentType": "Fotografía",
+      "photoType": "Retrato",
+      "imageUrl": "/img/_MG_0406.webp",
+      "categories": ["Retrato"]
+    },
+    {
+      "id": 4,
+      "companyName": "Proyecto 4",
       "contentType": "Fotografía",
       "photoType": "Paisaje",
-      "imageUrl": "/img/portfolio/imagen2.jpg",
-      "categories": ["Paisaje", "Moderno"]
+      "imageUrl": "/img/_MG_1754.webp",
+      "categories": ["Paisaje"]
+    },
+    {
+      "id": 5,
+      "companyName": "Proyecto 5",
+      "contentType": "Fotografía",
+      "photoType": "Pareja",
+      "imageUrl": "/img/_MG_2046.webp",
+      "categories": ["Pareja"]
+    },
+    {
+      "id": 6,
+      "companyName": "Proyecto 6",
+      "contentType": "Fotografía",
+      "photoType": "Producto",
+      "imageUrl": "/img/_MG_4619-2.webp",
+      "categories": ["Producto"]
+    },
+    {
+      "id": 7,
+      "companyName": "Proyecto 7",
+      "contentType": "Fotografía",
+      "photoType": "Moda",
+      "imageUrl": "/img/_MG_5779.webp",
+      "categories": ["Moda"]
+    },
+    {
+      "id": 8,
+      "companyName": "Proyecto 8",
+      "contentType": "Fotografía",
+      "photoType": "Arquitectura",
+      "imageUrl": "/img/_MG_6443-1.webp",
+      "categories": ["Arquitectura"]
+    },
+    {
+      "id": 9,
+      "companyName": "Proyecto 9",
+      "contentType": "Fotografía",
+      "photoType": "Naturaleza",
+      "imageUrl": "/img/_MG_7028.webp",
+      "categories": ["Naturaleza"]
+    },
+    {
+      "id": 10,
+      "companyName": "Proyecto 10",
+      "contentType": "Fotografía",
+      "photoType": "Retrato",
+      "imageUrl": "/img/_MG_8201.webp",
+      "categories": ["Retrato"]
+    },
+    {
+      "id": 11,
+      "companyName": "Proyecto 11",
+      "contentType": "Fotografía",
+      "photoType": "Paisaje",
+      "imageUrl": "/img/_MG_9090.webp",
+      "categories": ["Paisaje"]
+    },
+    {
+      "id": 12,
+      "companyName": "Proyecto 12",
+      "contentType": "Fotografía",
+      "photoType": "Evento",
+      "imageUrl": "/img/_MG_9191.webp",
+      "categories": ["Evento"]
+    },
+    {
+      "id": 13,
+      "companyName": "Proyecto 13",
+      "contentType": "Fotografía",
+      "photoType": "Callejero",
+      "imageUrl": "/img/_MG_8476.webp",
+      "categories": ["Callejero","Pareja"]
     }
   ]
 }
