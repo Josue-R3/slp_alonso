@@ -4,6 +4,7 @@ import Footer from "./layout/Footer";
 import "../public/css/globals.css";
 import "../public/css/header.css";
 import "../public/css/intro.css";
+import "../public/css/portfolio.css";
 
 export const metadata: Metadata = {
   title: "Alonso Vasquez",

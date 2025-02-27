@@ -1,12 +1,17 @@
-"use client"; // Necesario en Next.js cuando se usan hooks de React (useState, useEffect)
+"use client"; // Para asegurar que se ejecute solo en el cliente
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import LightGallery from "lightgallery/react";
-import "lightgallery/css/lightgallery.css"; // Importa los estilos de LightGallery
-import imagesLoaded from "imagesloaded"; // Permite manejar imágenes cargadas antes de aplicar Masonry
-import Isotope from "isotope-layout"; // Librería para manejar el layout tipo "Masonry"
+import "lightgallery/css/lightgallery.css";
+
+// Importar dinámicamente para evitar errores en SSR
+const LightGallery = dynamic(() => import("lightgallery/react"), {
+  ssr: false,
+});
+const Isotope = dynamic(() => import("isotope-layout"), { ssr: false });
+const imagesLoaded = dynamic(() => import("imagesloaded"), { ssr: false });
 
 const PortfolioContainer = () => {
   // 🟢 Estado donde almacenaremos los datos del portafolio
@@ -20,11 +25,11 @@ const PortfolioContainer = () => {
 
   // ✅ 1️⃣ Cargar datos del JSON al montar el componente
   useEffect(() => {
-    fetch("/data/portfolio.json") // Carga el archivo JSON local
-      .then((res) => res.json()) // Convierte la respuesta en JSON
+    fetch("/data/portfolio.json")
+      .then((res) => res.json())
       .then((data) => {
-        setPortfolioData(data.portfolio); // Guarda los datos en el estado
-        // Extraemos todas las categorías y eliminamos duplicados
+        setPortfolioData(data.portfolio);
+        // Extraer categorías únicas
         const allCategories = data.portfolio.flatMap((item) => item.categories);
         setCategories([...new Set(allCategories)]);
       })
@@ -33,29 +38,29 @@ const PortfolioContainer = () => {
 
   // ✅ 2️⃣ Inicializar Masonry (Isotope.js) cuando las imágenes estén cargadas
   useEffect(() => {
-    const grid = document.querySelector(".portfolio-list"); // Selecciona la lista de imágenes
+    if (portfolioData.length === 0) return; // Evita ejecutar si no hay datos cargados
+
+    const grid = document.querySelector(".portfolio-list");
     if (!grid) return;
 
     const iso = new Isotope(grid, {
-      itemSelector: ".masonry-grid", // Define los elementos que formarán la cuadrícula
-      layoutMode: "masonry", // Establece el diseño tipo Masonry
+      itemSelector: ".masonry-grid",
+      layoutMode: "masonry",
     });
 
-    // Esperar a que las imágenes estén cargadas antes de inicializar Masonry
     imagesLoaded(grid, () => {
       iso.layout();
     });
 
-    // Limpiar Isotope cuando el componente se desmonte
     return () => {
       iso.destroy();
     };
-  }, [portfolioData]); // Se ejecuta cuando `portfolioData` cambia
+  }, [portfolioData]);
 
   // ✅ 3️⃣ Filtrar los proyectos según la categoría seleccionada
   const filteredPortfolio =
     filter === "*"
-      ? portfolioData // Si el filtro es "*", mostrar todos los proyectos
+      ? portfolioData
       : portfolioData.filter((item) => item.categories.includes(filter));
 
   return (
@@ -64,16 +69,16 @@ const PortfolioContainer = () => {
         {/* ✅ 4️⃣ Sección de botones de filtro */}
         <div className="messonry-button text-center mb-50">
           <button
-            className={filter === "*" ? "is-checked" : ""} // Resaltar el botón activo
-            onClick={() => setFilter("*")} // Al hacer clic, mostrar todos los proyectos
+            className={filter === "*" ? "is-checked" : ""}
+            onClick={() => setFilter("*")}
           >
             <span className="filter-text">Todos</span>
           </button>
           {categories.map((cat, idx) => (
             <button
               key={idx}
-              className={filter === cat ? "is-checked" : ""} // Resaltar la categoría activa
-              onClick={() => setFilter(cat)} // Filtrar por categoría
+              className={filter === cat ? "is-checked" : ""}
+              onClick={() => setFilter(cat)}
             >
               <span className="filter-text">{cat}</span>
             </button>
@@ -81,24 +86,26 @@ const PortfolioContainer = () => {
         </div>
 
         {/* ✅ 5️⃣ Sección de imágenes en formato Masonry */}
-        <LightGallery>
-          {" "}
-          {/* LightGallery envuelve todas las imágenes */}
+        <LightGallery selector=".lightgallery-item">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 portfolio-list mb-n30">
             {filteredPortfolio.map((portfolio) => (
               <div key={portfolio.id} className="col masonry-grid mb-30">
                 <div className="single-portfolio">
-                  {/* ✅ LightGallery requiere un <a> con "data-src" para abrir la imagen en visor */}
-                  <a href={portfolio.imageUrl} data-src={portfolio.imageUrl}>
+                  {/* ✅ LightGallery requiere un <a> con "href" y "data-src" */}
+                  <a
+                    href={portfolio.imageUrl}
+                    data-src={portfolio.imageUrl}
+                    className="lightgallery-item"
+                  >
                     <div className="thumbnail">
                       <div className="overlay">
                         {/* ✅ next/image optimiza automáticamente las imágenes */}
                         <Image
-                          src={portfolio.imageUrl} // URL de la imagen
-                          alt={portfolio.companyName} // Texto alternativo
-                          width={400} // Ancho de la imagen
-                          height={300} // Alto de la imagen
-                          priority // Carga prioritaria
+                          src={portfolio.imageUrl}
+                          alt={portfolio.companyName}
+                          width={400}
+                          height={300}
+                          priority
                         />
                       </div>
                     </div>
