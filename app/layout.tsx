@@ -1,13 +1,13 @@
+import * as React from "react";
 import type { Metadata } from "next";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import "../public/css/globals.css";
-import "../public/css/header.css";
-import "../public/css/intro.css";
-import "../public/css/portfolio.css";
 
+// ✅ Ahora `metadata` puede permanecer aquí porque es un Server Component
 export const metadata: Metadata = {
   title: "Alonso Vasquez",
+  description: "Portafolio y proyectos de Alonso Vasquez.",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className="antialiased">
         <Header />
         <main>{children}</main>

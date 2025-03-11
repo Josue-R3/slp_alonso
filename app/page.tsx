@@ -1,11 +1,11 @@
-import IntroSlider from "./components/Slider"
-import PortfolioContainer from "./sections/Portfolio";
+//import IntroSlider from "./components/Slider"
+
+import Gallery from "./components/Gallery";
 
 export default function Home() {
   return (
     <>
-    <IntroSlider />
-   <PortfolioContainer />
+      <Gallery />
     </>
   );
 }
