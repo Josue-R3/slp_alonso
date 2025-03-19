@@ -1,6 +1,6 @@
 [
   {
-    "src": "/img/_DSC2216.webp",
+    "src": "/img/_DSC2216.jpg",
     "alt": "Imagen 1",
     "title": "Atardecer en la playa",
     "categories": ["Naturaleza", "Paisaje"],
@@ -8,7 +8,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_0381.webp",
+    "src": "/img/_MG_0381.jpg",
     "alt": "Imagen 2",
     "title": "Montañas nevadas",
     "categories": ["Paisaje", "Invierno"],
@@ -16,7 +16,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_0406.webp",
+    "src": "/img/_MG_0406.jpg",
     "alt": "Imagen 3",
     "title": "Ciudad nocturna",
     "categories": ["Urbanismo", "Nocturno"],
@@ -24,7 +24,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_1754.webp",
+    "src": "/img/_MG_1754.jpg",
     "alt": "Imagen 4",
     "title": "Bosque en otoño",
     "categories": ["Naturaleza", "Otoño"],
@@ -32,7 +32,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_2046.webp",
+    "src": "/img/_MG_2046.jpg",
     "alt": "Imagen 5",
     "title": "Retrato en estudio",
     "categories": ["Retrato", "Estudio"],
@@ -40,7 +40,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_4619.webp",
+    "src": "/img/_MG_4619.jpg",
     "alt": "Imagen 6",
     "title": "Evento corporativo",
     "categories": ["Eventos", "Empresarial"],
@@ -48,7 +48,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_5779.webp",
+    "src": "/img/_MG_5779.jpg",
     "alt": "Imagen 7",
     "title": "Arte callejero",
     "categories": ["Arte", "Cultura"],
@@ -56,7 +56,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_6443.webp",
+    "src": "/img/_MG_6443.jpg",
     "alt": "Imagen 8",
     "title": "Deporte extremo",
     "categories": ["Deportes", "Acción"],
@@ -64,7 +64,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_7028.webp",
+    "src": "/img/_MG_7028.jpg",
     "alt": "Imagen 9",
     "title": "Video promocional",
     "categories": ["Video", "Promocional"],
@@ -72,7 +72,7 @@
     "type": "video"
   },
   {
-    "src": "/img/_MG_8201.webp",
+    "src": "/img/_MG_8201.jpg",
     "alt": "Imagen 10",
     "title": "Naturaleza salvaje",
     "categories": ["Naturaleza", "Animales"],
@@ -80,7 +80,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_8476.webp",
+    "src": "/img/_MG_8476.jpg",
     "alt": "Imagen 11",
     "title": "Arquitectura moderna",
     "categories": ["Arquitectura", "Diseño"],
@@ -88,7 +88,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_9090.webp",
+    "src": "/img/_MG_9090.jpg",
     "alt": "Imagen 12",
     "title": "Festival cultural",
     "categories": ["Cultura", "Eventos"],
@@ -96,7 +96,7 @@
     "type": "image"
   },
   {
-    "src": "/img/_MG_9191.webp",
+    "src": "/img/_MG_9191.jpg",
     "alt": "Imagen 13",
     "title": "Paisaje rural",
     "categories": ["Paisaje", "Rural"],
