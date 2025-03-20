@@ -1,106 +1,354 @@
 [
   {
-    "src": "/img/_DSC2216.jpg",
-    "alt": "Imagen 1",
-    "title": "Atardecer en la playa",
-    "categories": ["Naturaleza", "Paisaje"],
-    "excerpt": "Una vista impresionante del atardecer sobre el océano.",
+    "src": "/img/DSC00190.jpg",
+    "alt": "Imagen DSC00190",
+    "title": "DSC00190",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_0381.jpg",
-    "alt": "Imagen 2",
-    "title": "Montañas nevadas",
-    "categories": ["Paisaje", "Invierno"],
-    "excerpt": "Una cadena montañosa cubierta de nieve en invierno.",
+    "src": "/img/DSC00875.jpg",
+    "alt": "Imagen DSC00875",
+    "title": "DSC00875",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_0406.jpg",
-    "alt": "Imagen 3",
-    "title": "Ciudad nocturna",
-    "categories": ["Urbanismo", "Nocturno"],
-    "excerpt": "Luces de la ciudad en una noche despejada.",
+    "src": "/img/DSC2216.jpg",
+    "alt": "Imagen DSC2216",
+    "title": "DSC2216",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_1754.jpg",
-    "alt": "Imagen 4",
-    "title": "Bosque en otoño",
-    "categories": ["Naturaleza", "Otoño"],
-    "excerpt": "Colores vibrantes de las hojas en un bosque otoñal.",
+    "src": "/img/DSC04084.jpg",
+    "alt": "Imagen DSC04084",
+    "title": "DSC04084",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_2046.jpg",
-    "alt": "Imagen 5",
-    "title": "Retrato en estudio",
-    "categories": ["Retrato", "Estudio"],
-    "excerpt": "Un retrato profesional realizado en estudio.",
+    "src": "/img/DSC04110.jpg",
+    "alt": "Imagen DSC04110",
+    "title": "DSC04110",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_4619.jpg",
-    "alt": "Imagen 6",
-    "title": "Evento corporativo",
-    "categories": ["Eventos", "Empresarial"],
-    "excerpt": "Momentos destacados de una conferencia empresarial.",
+    "src": "/img/DSC04172.jpg",
+    "alt": "Imagen DSC04172",
+    "title": "DSC04172",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_5779.jpg",
-    "alt": "Imagen 7",
-    "title": "Arte callejero",
-    "categories": ["Arte", "Cultura"],
-    "excerpt": "Un mural urbano lleno de color y creatividad.",
+    "src": "/img/DSC04242.jpg",
+    "alt": "Imagen DSC04242",
+    "title": "DSC04242",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_6443.jpg",
-    "alt": "Imagen 8",
-    "title": "Deporte extremo",
-    "categories": ["Deportes", "Acción"],
-    "excerpt": "Captura en acción de un deportista en salto.",
+    "src": "/img/DSC04345.jpg",
+    "alt": "Imagen DSC04345",
+    "title": "DSC04345",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_7028.jpg",
-    "alt": "Imagen 9",
-    "title": "Video promocional",
-    "categories": ["Video", "Promocional"],
-    "excerpt": "Una muestra del video promocional de la empresa.",
-    "type": "video"
-  },
-  {
-    "src": "/img/_MG_8201.jpg",
-    "alt": "Imagen 10",
-    "title": "Naturaleza salvaje",
-    "categories": ["Naturaleza", "Animales"],
-    "excerpt": "Vida salvaje en su hábitat natural.",
+    "src": "/img/DSC04432.jpg",
+    "alt": "Imagen DSC04432",
+    "title": "DSC04432",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_8476.jpg",
-    "alt": "Imagen 11",
-    "title": "Arquitectura moderna",
-    "categories": ["Arquitectura", "Diseño"],
-    "excerpt": "Diseño innovador de un edificio contemporáneo.",
+    "src": "/img/DSC5240.jpg",
+    "alt": "Imagen DSC5240",
+    "title": "DSC5240",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_9090.jpg",
-    "alt": "Imagen 12",
-    "title": "Festival cultural",
-    "categories": ["Cultura", "Eventos"],
-    "excerpt": "Escenas vibrantes de un festival local.",
+    "src": "/img/DSC5450.jpg",
+    "alt": "Imagen DSC5450",
+    "title": "DSC5450",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   },
   {
-    "src": "/img/_MG_9191.jpg",
-    "alt": "Imagen 13",
-    "title": "Paisaje rural",
-    "categories": ["Paisaje", "Rural"],
-    "excerpt": "Extensos campos y un cielo despejado en el campo.",
+    "src": "/img/DSC5560.jpg",
+    "alt": "Imagen DSC5560",
+    "title": "DSC5560",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC5937.jpg",
+    "alt": "Imagen DSC5937",
+    "title": "DSC5937",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC6099.jpg",
+    "alt": "Imagen DSC6099",
+    "title": "DSC6099",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC7183.jpg",
+    "alt": "Imagen DSC7183",
+    "title": "DSC7183",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC7186.jpg",
+    "alt": "Imagen DSC7186",
+    "title": "DSC7186",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07292.jpg",
+    "alt": "Imagen DSC07292",
+    "title": "DSC07292",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07312.jpg",
+    "alt": "Imagen DSC07312",
+    "title": "DSC07312",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07351.jpg",
+    "alt": "Imagen DSC07351",
+    "title": "DSC07351",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07355.jpg",
+    "alt": "Imagen DSC07355",
+    "title": "DSC07355",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07510.jpg",
+    "alt": "Imagen DSC07510",
+    "title": "DSC07510",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07799.jpg",
+    "alt": "Imagen DSC07799",
+    "title": "DSC07799",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07801.jpg",
+    "alt": "Imagen DSC07801",
+    "title": "DSC07801",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07814.jpg",
+    "alt": "Imagen DSC07814",
+    "title": "DSC07814",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07830.jpg",
+    "alt": "Imagen DSC07830",
+    "title": "DSC07830",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07868.jpg",
+    "alt": "Imagen DSC07868",
+    "title": "DSC07868",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC07880.jpg",
+    "alt": "Imagen DSC07880",
+    "title": "DSC07880",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC08238.jpg",
+    "alt": "Imagen DSC08238",
+    "title": "DSC08238",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC08253.jpg",
+    "alt": "Imagen DSC08253",
+    "title": "DSC08253",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC08266.jpg",
+    "alt": "Imagen DSC08266",
+    "title": "DSC08266",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC08270.jpg",
+    "alt": "Imagen DSC08270",
+    "title": "DSC08270",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC08274.jpg",
+    "alt": "Imagen DSC08274",
+    "title": "DSC08274",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/DSC08275.jpg",
+    "alt": "Imagen DSC08275",
+    "title": "DSC08275",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG0381.jpg",
+    "alt": "Imagen MG0381",
+    "title": "MG0381",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG0406.jpg",
+    "alt": "Imagen MG0406",
+    "title": "MG0406",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG1754.jpg",
+    "alt": "Imagen MG1754",
+    "title": "MG1754",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG2046.jpg",
+    "alt": "Imagen MG2046",
+    "title": "MG2046",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG4619.jpg",
+    "alt": "Imagen MG4619",
+    "title": "MG4619",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG5779.jpg",
+    "alt": "Imagen MG5779",
+    "title": "MG5779",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG6443.jpg",
+    "alt": "Imagen MG6443",
+    "title": "MG6443",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG7028.jpg",
+    "alt": "Imagen MG7028",
+    "title": "MG7028",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG8081.jpg",
+    "alt": "Imagen MG8081",
+    "title": "MG8081",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG8201.jpg",
+    "alt": "Imagen MG8201",
+    "title": "MG8201",
+    "excerpt": "",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/img/MG9090.jpg",
+    "alt": "Imagen MG9090",
+    "title": "MG9090",
+    "excerpt": "",
+    "categories": [],
     "type": "image"
   }
 ]
