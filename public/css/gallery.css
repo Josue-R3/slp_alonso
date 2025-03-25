@@ -87,3 +87,21 @@
     left: 100%;
   }
 }
+
+/* Borde y opacidad para TODAS las miniaturas */
+.lg-thumb-item {
+  border: 2px solid #13002A !important;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+/* Hover en miniaturas: un poco más opacas al pasar el mouse */
+.lg-thumb-item:hover {
+  opacity: 1;
+}
+
+/* Miniatura activa con borde morado y opacidad completa */
+.lg-thumb-item.active {
+  border-color: #9300FF !important;
+  opacity: 1;
+}
