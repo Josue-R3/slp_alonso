@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import LightGallery from "lightgallery/react";
-import "@/public/css/gallery.css"; // Import custom styles
+import "@/public/css/gallery.css";
 
 // Import LightGallery core styles
 import "lightgallery/css/lightgallery.css";

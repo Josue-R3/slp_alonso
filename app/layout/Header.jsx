@@ -1,6 +1,7 @@
 "use client";
 import { Bars3Icon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import "@/public/css/header.css";
 
 const Header = () => {
   return (
