@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import Swiper, { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Intro from "./Intro";
@@ -33,12 +33,12 @@ const IntroContainer = () => {
   );
 };
 
-export default IntroContainer;
+//export default IntroContainer;
 
 
 import PropTypes from "prop-types";
 import Link from "next/link";
-const Intro = ({ data }) => {
+//const Intro = ({ data }) => {
   return (
     <div
       className="intro-section section overlay"
@@ -73,3 +73,4 @@ Intro.propTypes = {
 };
 
 export default Intro;
+*/
