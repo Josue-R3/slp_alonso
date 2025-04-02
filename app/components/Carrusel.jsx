@@ -1,207 +1,161 @@
 "use client";
 
-// TODO: Refactorizar para que sea un componente de 4 videos por vista total 8 slider automatico con hover:pause hover descripción
-
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import "@/public/css/carrusel.css";
 
 export default function Carrusel() {
-  const swiperRef = useRef();
+  const swiperRef = useRef(null);
   const [works, setWorks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadedVideos, setLoadedVideos] = useState({});
   const videoRefs = useRef({});
+  const preloadedVideos = useRef({});
 
-  // Función para manejar la carga de videos
+  // Usamos useMemo para evitar que se haga la petición de los videos al refrescar la página
+  const videosData = useMemo(() => {
+    // Carga los datos solo una vez al cargar el componente
+    fetch("/data/carrusel.json")
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data)) {
+          setWorks(data);
+        } else {
+          console.error("Invalid data format for carrusel.json");
+        }
+      })
+      .catch((err) => console.error("Error fetching videos:", err));
+  }, []); // El segundo parámetro vacío asegura que solo se ejecute una vez
+
+  // Función para precargar videos
+  const preloadVideo = async (src, index) => {
+    return new Promise((resolve) => {
+      const video = document.createElement("video");
+      video.src = src;
+      video.preload = "auto";
+      video.muted = true;
+
+      video.oncanplaythrough = () => {
+        preloadedVideos.current[index] = true;
+        setLoadedVideos((prev) => ({ ...prev, [index]: true }));
+        resolve(true);
+      };
+
+      video.onerror = () => {
+        console.error(`Error preloading video ${index}`);
+        resolve(false);
+      };
+
+      setTimeout(() => {
+        if (!preloadedVideos.current[index]) {
+          setLoadedVideos((prev) => ({ ...prev, [index]: true }));
+          resolve(true);
+        }
+      }, 5000);
+    });
+  };
+
   const handleVideoLoad = (index) => {
-    videoRefs.current[index]
-      ?.play()
-      .catch((err) => console.log("Playback prevented:", err));
+    if (videoRefs.current[index]) {
+      videoRefs.current[index].play().catch((err) => {
+        console.log("Playback prevented:", err);
+      });
+    }
   };
 
   useEffect(() => {
-    fetch("/data/carrusel.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to load slider.json");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (!Array.isArray(data)) {
-          throw new Error("Invalid format: slider.json should be an array");
-        }
-        setWorks(data);
-        // Precarga los videos usando createElement
-        data.forEach((work, index) => {
-          const video = document.createElement("video");
-          video.src = work.src;
-          video.load();
-          video.muted = true;
-          video.playsInline = true;
-          video.loop = true;
-          videoRefs.current[index] = video;
-        });
-      })
-      .catch((err) => console.error("Error fetching slider data:", err))
-      .finally(() => setLoading(false));
-
-    // Cleanup
-    return () => {
-      Object.values(videoRefs.current).forEach((video) => {
-        if (video && !video.paused) {
-          video.pause();
-        }
-      });
-    };
-  }, []);
+    if (works.length > 0) {
+      setLoading(true);
+      const preloadPromises = works.map((work, index) =>
+        preloadVideo(work.src, index)
+      );
+      Promise.all(preloadPromises).finally(() => setLoading(false));
+    }
+  }, [works]); // Cuando los works cambian (después de la petición de los datos), empieza a cargar los videos
 
   return (
-    <section className="container mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row gap-8 items-center">
-        {/* Sección de navegación izquierda */}
-        <div className="w-full md:w-1/3 flex flex-col items-center md:items-start gap-4">
-          <h2 className="text-2xl font-bold text-teal-600">Videos Portfolio</h2>
-          <div className="flex gap-4">
-            <button
-              className="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition-colors disabled:opacity-50"
-              onClick={() => swiperRef.current?.slidePrev()}
-              disabled={loading}
-              aria-label="Anterior video"
-            >
-              Anterior
-            </button>
-            <button
-              className="bg-teal-600 text-white px-4 py-2 rounded-full hover:bg-teal-700 transition-colors disabled:opacity-50"
-              onClick={() => swiperRef.current?.slideNext()}
-              disabled={loading}
-              aria-label="Siguiente video"
-            >
-              Siguiente
-            </button>
-          </div>
-        </div>
-
-        {/* Sección de slides derecha */}
-        <div className="w-full md:w-2/3 flex flex-col items-center gap-6">
-          <Swiper
-            onBeforeInit={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            className="w-full h-[400px]"
-            modules={[Navigation, Pagination]}
-            spaceBetween={30}
-            slidesPerView={3}
-            slidesPerGroup={1}
-            loop={true}
-            onSlideChange={(swiper) => {
-              // Manejar la reproducción de videos cuando cambia el slide
-              const activeIndices = [
-                swiper.activeIndex,
-                swiper.activeIndex + 1,
-                swiper.activeIndex + 2,
-              ].map((i) => i % works.length);
-
-              Object.entries(videoRefs.current).forEach(([index, video]) => {
-                if (activeIndices.includes(Number(index))) {
-                  video.play().catch(() => {});
-                } else {
-                  video.pause();
-                }
-              });
-            }}
-            pagination={{
-              clickable: true,
-              el: ".swiper-pagination",
-            }}
-            breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-              },
-            }}
-          >
-            {loading
-              ? // Skeleton loading
-                Array(3)
-                  .fill(0)
-                  .map((_, index) => (
-                    <SwiperSlide
-                      key={index}
-                      className="rounded-xl overflow-hidden bg-gray-200 animate-pulse"
-                    >
-                      <div className="aspect-video"></div>
-                    </SwiperSlide>
-                  ))
-              : // Videos content
-                works.map((work, index) => (
+    <section className="video-carousel-container">
+      <div className="carousel-wrapper">
+        <Swiper
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          className="video-swiper"
+          modules={[Autoplay]}
+          spaceBetween={16}
+          slidesPerView={4}
+          loop={true}
+          speed={5000} // Aumento la velocidad del movimiento
+          autoplay={{
+            delay: 0,
+            disableOnInteraction: false,
+          }}
+          simulateTouch={false} // Deshabilitar el desplazamiento táctil y con mouse
+          allowTouchMove={false} // Deshabilitar el movimiento táctil
+          scrollbar={{
+            draggable: false, // Desactivar el draggable en el Scrollbar
+          }}
+          breakpoints={{
+            320: {
+              slidesPerView: 1.2,
+              spaceBetween: 12,
+            },
+            640: {
+              slidesPerView: 2.2,
+              spaceBetween: 14,
+            },
+            768: {
+              slidesPerView: 3.2,
+              spaceBetween: 16,
+            },
+            1024: {
+              slidesPerView: 4.2,
+              spaceBetween: 16,
+            },
+          }}
+        >
+          {loading
+            ? Array(4)
+                .fill(0)
+                .map((_, index) => (
                   <SwiperSlide
-                    key={index}
-                    className="group rounded-xl overflow-hidden shadow-lg bg-white transition-transform hover:scale-105"
+                    key={`skeleton-${index}`}
+                    className="video-slide skeleton"
                   >
-                    <div className="relative w-full h-full aspect-video">
+                    <div className="video-aspect-ratio"></div>
+                  </SwiperSlide>
+                ))
+            : works.map((work, index) => (
+                <SwiperSlide key={`video-${index}`} className="video-slide">
+                  <div className="video-container">
+                    {loadedVideos[index] ? (
                       <video
                         ref={(el) => (videoRefs.current[index] = el)}
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="video-element"
                         src={work.src}
-                        autoPlay
                         loop
                         muted
                         playsInline
-                        onLoadedData={() => handleVideoLoad(index)}
+                        preload="auto"
+                        onCanPlayThrough={() => handleVideoLoad(index)}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent group-hover:from-black/90 transition-colors">
-                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                          <h3 className="text-lg font-semibold mb-1 transform group-hover:-translate-y-1 transition-transform">
-                            {work.title}
-                          </h3>
-                          {work.excerpt && (
-                            <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                              {work.excerpt}
-                            </p>
-                          )}
-                        </div>
+                    ) : (
+                      <div className="video-loader">
+                        <div className="loader-spinner"></div>
+                      </div>
+                    )}
+                    <div className="video-overlay">
+                      <div className="video-info">
+                        <h3 className="video-title">{work.title}</h3>
                       </div>
                     </div>
-                  </SwiperSlide>
-                ))}
-          </Swiper>
-
-          {/* Paginación externa y centrada */}
-          <div className="swiper-pagination flex justify-center gap-2 mt-4"></div>
-        </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+        </Swiper>
       </div>
-
-      <style jsx global>{`
-        .swiper-pagination {
-          position: static !important;
-          margin-top: 1rem;
-        }
-        .swiper-pagination-bullet {
-          width: 8px;
-          height: 8px;
-          background: #0d9488 !important;
-          opacity: 0.5;
-          cursor: pointer;
-          transition: all 0.3s;
-        }
-        .swiper-pagination-bullet-active {
-          opacity: 1;
-          width: 24px;
-          border-radius: 4px;
-        }
-      `}</style>
     </section>
   );
 }
