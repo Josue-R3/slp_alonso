@@ -1,4 +1,5 @@
-"use client";
+// Gallery.jsx
+'use client';
 
 import { useEffect, useRef, useState } from "react";
 import LightGallery from "lightgallery/react";
@@ -22,10 +23,13 @@ const Gallery = () => {
   const [loading, setLoading] = useState(true);
   // Tracks which images failed to load and need skeleton
   const [errorImages, setErrorImages] = useState({});
-
   // Ref for the LightGallery instance
   const lightboxRef = useRef(null);
-
+  
+  // Estado para controlar si la galería está expandida
+  const [isExpanded, setIsExpanded] = useState(false);
+  const collapsedHeight = 800; // Altura cuando está colapsado
+  
   // Fetch image data from public/data/portfolio.json
   useEffect(() => {
     console.log("Fetching images...");
@@ -65,48 +69,72 @@ const Gallery = () => {
     };
   }, []);
 
+  // Función para alternar entre expandido y colapsado
+  const toggleExpand = () => {
+    // Guardar la posición actual del scroll
+    const scrollPosition = window.scrollY;
+    
+    setIsExpanded(!isExpanded);
+    
+    // Restaurar la posición del scroll
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollPosition);
+    });
+  };
+
   return (
     <div className="gallery-container">
-      {/* If no images available show message */}
       {images.length === 0 ? (
-        <p className="no-images-message">
-          No images found. Check the JSON file.
-        </p>
+        <p className="no-images-message">No images found. Check the JSON file.</p>
       ) : (
-        <LightGallery
-          ref={lightboxRef}
-          speed={500}
-          plugins={[lgThumbnail, lgZoom, lgRotate]}
-          selector=".gallery-item"
-        >
-          {/* Gallery grid container */}
-          <div className="gallery-grid">
-            {images.map((image, index) => (
-              // Main wrapper for each image
-              <a
-                key={index}
-                href={image.src}
-                data-src={image.src} // Required for LightGallery
-                data-sub-html="" // Prevents showing any title/alt in overlay
-                className="gallery-item"
-              >
-                {errorImages[index] ? (
-                  // Skeleton shown if image fails to load
-                  <div className="skeleton"></div>
-                ) : (
-                  <img
-                    src={image.src}
-                    className="gallery-image"
-                    onError={(e) => {
-                      console.error(`Error loading image: ${e.target.src}`);
-                      setErrorImages((prev) => ({ ...prev, [index]: true }));
-                    }}
-                  />
-                )}
-              </a>
-            ))}
+        <div className="gallery-wrapper">
+          <div 
+            className={`gallery-expandable ${isExpanded ? 'expanded' : 'collapsed'}`}
+          >
+            <LightGallery
+              ref={lightboxRef}
+              speed={500}
+              plugins={[lgThumbnail, lgZoom, lgRotate]}
+              selector=".gallery-item"
+              elementClassNames="w-full"
+            >
+              <div className={`gallery-grid ${isExpanded ? '' : 'hidden-content'}`}>
+                {images.map((image, index) => (
+                  <a
+                    key={index}
+                    href={image.src}
+                    data-src={image.src}
+                    data-sub-html=""
+                    className="gallery-item"
+                  >
+                    {errorImages[index] ? (
+                      <div className="skeleton"></div>
+                    ) : (
+                      <img
+                        src={image.src}
+                        className="gallery-image"
+                        onError={(e) => {
+                          setErrorImages((prev) => ({ ...prev, [index]: true }));
+                        }}
+                      />
+                    )}
+                  </a>
+                ))}
+              </div>
+            </LightGallery>
           </div>
-        </LightGallery>
+          
+          <div 
+            className={`toggle-overlay ${isExpanded ? 'expanded' : ''}`}
+          >
+            <button 
+              className="toggle-btn"
+              onClick={toggleExpand}
+            >
+              {isExpanded ? 'Ver menos' : 'Ver más'}
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
