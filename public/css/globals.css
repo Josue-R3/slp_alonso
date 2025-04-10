@@ -1,11 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-    /* Definimos una variable CSS para el degradado */
-    --primary-gradient: linear-gradient(90deg, #13002A, #9300FF);
-    --primary-strong-color: #9300FF;
-    --primary-dark-color: #13002A;
-    --primary-light-color: #E5E5E5;
-  }

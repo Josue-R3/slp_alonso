@@ -1,7 +1,7 @@
 // Gallery.jsx
 'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import LightGallery from "lightgallery/react";
 import "@/public/css/gallery.css";
 
@@ -47,7 +47,7 @@ const Gallery = () => {
         if (!Array.isArray(data)) {
           throw new Error("Invalid JSON format. Expected an array.");
         }
-        console.log("Images loaded successfully", data);
+        //console.log("Images loaded successfully", data);
         setImages(data);
       })
       .catch((error) => console.error("Error loading images:", error))
@@ -69,18 +69,13 @@ const Gallery = () => {
     };
   }, []);
 
-  // Función para alternar entre expandido y colapsado
-  const toggleExpand = () => {
-    // Guardar la posición actual del scroll
+  // Memorizar función para evitar re-renders
+  const toggleExpand = useCallback(() => {
     const scrollPosition = window.scrollY;
-    
     setIsExpanded(!isExpanded);
     
-    // Restaurar la posición del scroll
-    requestAnimationFrame(() => {
-      window.scrollTo(0, scrollPosition);
-    });
-  };
+    requestAnimationFrame(() => window.scrollTo(0, scrollPosition));
+  }, [isExpanded]);
 
   return (
     <div className="gallery-container">
@@ -112,6 +107,7 @@ const Gallery = () => {
                     ) : (
                       <img
                         src={image.src}
+                        loading="lazy" // Agregar esto para lazy loading nativo
                         className="gallery-image"
                         onError={(e) => {
                           setErrorImages((prev) => ({ ...prev, [index]: true }));

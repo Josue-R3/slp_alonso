@@ -1,98 +1,101 @@
-/* Contenedor principal de la galería */
+/* 1. Contenedor principal */
 .gallery-container {
-  background-color: #ffffff; /* Fondo blanco */
-  position: relative; /* Necesario para que el overlay y el botón se posicionen correctamente */
-  margin: 50px 50px;
+  position: relative;
+  margin: 50px;           /* Corrige: margin: 50 => margin: 50px */
   padding: 20px;
-  padding-bottom: 150px; /* Aumentamos el espacio inferior para que el botón no se corte */
-  width: calc(100% - 100px); /* Restamos los márgenes */
+  width: calc(100% - 100px);
   max-width: 100%;
-  overflow-x: hidden; /* Evita desplazamiento horizontal */
+  overflow-x: hidden; /* Evita scroll horizontal */
 }
-/* Grid de imágenes usando columnas (efecto masonry) */
+
+/* 2. Wrapper y contenedor expandible */
 .gallery-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Importante para evitar scroll horizontal */
+  overflow: hidden;
 }
 
 .gallery-expandable {
   width: 100%;
-  box-sizing: border-box; /* Importante para que el padding no cause overflow */
-  max-height: 800px; /* Altura inicial colapsada */
+  box-sizing: border-box;
+  max-height: 800px; /* Altura inicial (colapsado) */
   overflow: hidden;
-  transition: max-height 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transition: max-height 0.8s ease-in-out;
 }
 
 .gallery-expandable.expanded {
-  max-height: 5000px; /* Altura expandida */
-  transition: max-height 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  max-height: 5000px; /* Altura al expandir */
 }
 
-/* Ajustar el grid para que no cause overflow */
+/* 3. Grid (efecto masonry básico) */
 .gallery-grid {
   column-count: 4;
   column-gap: 16px;
   width: 100%;
 }
 
-/* Asegúrate de que las imágenes estén contenidas */
+/* 4. Cada ítem: overlay + imagen */
 .gallery-item {
   display: inline-block;
   width: 100%;
   margin-bottom: 16px;
-  break-inside: avoid;
+  break-inside: avoid; /* Soporte para columnas (masonry) */
   position: relative;
   cursor: crosshair;
-  box-sizing: border-box; /* Importante */
+  border-radius: 6px;   /* Radio compartido con el overlay */
+  overflow: hidden;     /* Importante para recortar imagen y overlay juntos */
 }
 
+/* Overlay oscuro */
 .gallery-item::before {
+  content: "";
   position: absolute;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000000; /* Cambiado de rgba(0,0,0,0.5) */
-  opacity: 0.5;
-  border-radius: 6px;
+  inset: 0;            /* top:0; left:0; right:0; bottom:0 => ocupa todo */
+  background-color: #000;
+  opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  z-index: 1;
 }
 
-/* Efecto al pasar el mouse */
+/* Al hacer hover en el contenedor, aparece overlay + zoom imagen */
 .gallery-item:hover::before {
-  opacity: 1;
+  opacity: 0.3; 
 }
 
+/* Imagen */
 .gallery-image {
+  display: block;
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  object-fit: cover;
+  object-fit: cover; /* Ajuste de recorte */
   transition: transform 0.3s ease-in-out;
-  max-width: 100%; /* Asegura que la imagen no desborde */
 }
 
-/* Overlay para el botón Ver más/menos */
+/* Zoom en la imagen al hacer hover en el ítem (no en la imagen misma) */
+.gallery-item:hover .gallery-image {
+  transform: scale(1.05);
+}
+
+/* 5. Overlay y botón "Ver más" */
 .toggle-overlay {
   position: absolute;
-  bottom: 0; /* El gradiente comienza desde el borde inferior */
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 95px; /* Aumentamos la altura para cubrir más contenido */
+  height: 95px;
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Alineamos el botón al final del overlay */
-  pointer-events: none; /* Permite clic a través del overlay excepto en el botón */
-  background: linear-gradient(to bottom, #ffffff00, #ffffff); /* Cambiado de rgba */
-  transition: opacity 0.5s ease, background 0.5s ease;
-  z-index: 1; /* Asegura que el overlay esté por encima del contenido */
+  align-items: flex-end;
+  pointer-events: none; /* El clic pasa al botón */
+  background: linear-gradient(to bottom, #ffffff00, #ffffff);
+  transition: opacity 0.6s ease, background 0.6s ease;
+  z-index: 2;
 }
 
-/* Botón Ver más/menos */
 .toggle-btn {
-  pointer-events: auto; /* Permite clics en el botón */
-  background-color: var(--primary-dark-color) ; /* Color sólido */
-  color: #ffffff; /* Texto blanco */
+  pointer-events: auto; 
+  background-color: #13002A !important;
+  color: #fff;
   border: none;
   border-radius: 24px;
   padding: 10px 20px;
@@ -100,18 +103,60 @@
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 5px #00000033; /* Cambiado de rgba(0, 0, 0, 0.2) */
-  z-index: 2; /* Asegura que el botón esté por encima del overlay */
-  position: relative; /* Necesario para que el z-index funcione */
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 5px #00000033;
+  z-index: 3; 
+  position: relative;
 }
 
 .toggle-btn:hover {
-  background-color: var(--primary-strong-color) ; /* Color más oscuro al pasar el mouse */
-  transform: scale(1.05); /* Efecto de escala */
+  background-color: #9300FF !important;
+  transform: scale(1.05);
 }
 
-/* Media queries para ajustar el número de columnas en pantallas más pequeñas */
+/* 6. Estilos LightGallery (miniaturas)*/
+.lg-thumb-item {
+  border: 2px solid #13002A !important;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.lg-thumb-item:hover {
+  opacity: 1;
+}
+
+.lg-thumb-item.active {
+  border-color: #9300FF !important;
+  opacity: 1;
+}
+
+/* 7. Skeleton Loading */
+.skeleton {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0%   { left: -150px; }
+  100% { left: 100%;   }
+}
+
+/* 8. Responsividad (columnas) */
 @media (max-width: 1200px) {
   .gallery-grid {
     column-count: 3;
@@ -130,8 +175,10 @@
   }
 }
 
+/* Por debajo de 480px, puedes elegir 1 o 2 columnas */
 @media (max-width: 480px) {
   .gallery-grid {
-    column-count: 2;
+    column-count: 2; 
+    /* Si quieres sólo 1 columna para pantallas muy pequeñas, usa: column-count: 1; */
   }
 }
