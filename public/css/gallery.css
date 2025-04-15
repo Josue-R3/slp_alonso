@@ -1,11 +1,11 @@
 /* 1. Contenedor principal */
 .gallery-container {
   position: relative;
-  margin: 50px;           /* Corrige: margin: 50 => margin: 50px */
+  margin: 50px;
   padding: 20px;
   width: calc(100% - 100px);
   max-width: 100%;
-  overflow-x: hidden; /* Evita scroll horizontal */
+  overflow-x: hidden;
 }
 
 /* 2. Wrapper y contenedor expandible */
@@ -18,65 +18,76 @@
 .gallery-expandable {
   width: 100%;
   box-sizing: border-box;
-  max-height: 800px; /* Altura inicial (colapsado) */
+  max-height: 800px; /* Altura inicial */
   overflow: hidden;
-  transition: max-height 0.8s ease-in-out;
+  transition: max-height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); /* Curva mejorada */
 }
 
 .gallery-expandable.expanded {
-  max-height: 5000px; /* Altura al expandir */
+  max-height: 5000px;
 }
 
-/* 3. Grid (efecto masonry básico) */
+/* 3. Grid con efecto masonry */
 .gallery-grid {
   column-count: 4;
   column-gap: 16px;
   width: 100%;
+  transition: opacity 0.3s ease-in-out;
 }
 
-/* 4. Cada ítem: overlay + imagen */
+/* Ocultar contenido cuando está colapsado */
+.hidden-content {
+  max-height: 800px;
+  overflow: hidden;
+}
+
+/* 4. Cada item de galería con overlay */
 .gallery-item {
   display: inline-block;
   width: 100%;
   margin-bottom: 16px;
-  break-inside: avoid; /* Soporte para columnas (masonry) */
+  break-inside: avoid;
   position: relative;
-  cursor: crosshair;
-  border-radius: 6px;   /* Radio compartido con el overlay */
-  overflow: hidden;     /* Importante para recortar imagen y overlay juntos */
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-/* Overlay oscuro */
+/* Overlay con efecto hover */
 .gallery-item::before {
   content: "";
   position: absolute;
-  inset: 0;            /* top:0; left:0; right:0; bottom:0 => ocupa todo */
+  inset: 0;
   background-color: #000;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   z-index: 1;
 }
 
-/* Al hacer hover en el contenedor, aparece overlay + zoom imagen */
 .gallery-item:hover::before {
-  opacity: 0.3; 
+  opacity: 0.3;
 }
 
-/* Imagen */
+/* Imagen con zoom en hover */
 .gallery-image {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: cover; /* Ajuste de recorte */
-  transition: transform 0.3s ease-in-out;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
 }
 
-/* Zoom en la imagen al hacer hover en el ítem (no en la imagen misma) */
 .gallery-item:hover .gallery-image {
   transform: scale(1.05);
 }
 
-/* 5. Overlay y botón "Ver más" */
+/* Animación de carga cohesionada */
+.images-ready .gallery-image {
+  opacity: 1;
+}
+
+/* 5. Overlay para botón "Ver más" */
 .toggle-overlay {
   position: absolute;
   bottom: 0;
@@ -86,14 +97,14 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  pointer-events: none; /* El clic pasa al botón */
-  background: linear-gradient(to bottom, #ffffff00, #ffffff);
-  transition: opacity 0.6s ease, background 0.6s ease;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, #fff);
   z-index: 2;
 }
 
+/* Botón "Ver más" */
 .toggle-btn {
-  pointer-events: auto; 
+  pointer-events: auto;
   background-color: #13002A !important;
   color: #fff;
   border: none;
@@ -103,10 +114,10 @@
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 5px #00000033;
-  z-index: 3; 
-  position: relative;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 3;
 }
 
 .toggle-btn:hover {
@@ -114,7 +125,7 @@
   transform: scale(1.05);
 }
 
-/* 6. Estilos LightGallery (miniaturas)*/
+/* 6. Estilos LightGallery */
 .lg-thumb-item {
   border: 2px solid #13002A !important;
   opacity: 0.5;
@@ -136,7 +147,7 @@
   width: 100%;
   height: 200px;
   background-color: #eee;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -147,27 +158,22 @@
   left: -150px;
   height: 100%;
   width: 150px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
   animation: skeleton-loading 1.5s infinite;
 }
 
 @keyframes skeleton-loading {
-  0%   { left: -150px; }
-  100% { left: 100%;   }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(100% + 150px)); }
 }
 
-/* 8. Responsividad (columnas) */
+/* 8. Responsividad */
 @media (max-width: 1200px) {
-  .gallery-grid {
-    column-count: 3;
-  }
+  .gallery-grid { column-count: 3; }
 }
 
 @media (max-width: 768px) {
-  .gallery-grid {
-    column-count: 2;
-  }
-
+  .gallery-grid { column-count: 2; }
   .gallery-container {
     margin: 20px;
     padding: 10px;
@@ -175,10 +181,6 @@
   }
 }
 
-/* Por debajo de 480px, puedes elegir 1 o 2 columnas */
 @media (max-width: 480px) {
-  .gallery-grid {
-    column-count: 2; 
-    /* Si quieres sólo 1 columna para pantallas muy pequeñas, usa: column-count: 1; */
-  }
+  .gallery-grid { column-count: 1; }
 }

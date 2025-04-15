@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       {/*<IntroContainer />*/}
-      <Carrusel />
+      {/*<Carrusel />*/}
       <Gallery />
       {/*<About />*/}
 
