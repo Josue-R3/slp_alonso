@@ -91,8 +91,8 @@ const Portfolio = () => {
                 <a key={index} data-src={item.src} className="portfolio-item">
                   <img
                     src={item.src}
-                    className="portfolio-image"
                     alt={item.title || `Portfolio item ${index + 1}`}
+                    className="portfolio-image"
                     onLoad={handleImageLoad}
                   />
                 </a>
