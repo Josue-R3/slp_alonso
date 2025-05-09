@@ -51,10 +51,7 @@
 
 /* Estilos para las tarjetas de servicio */
 .service-card {
-    aspect-ratio: 9 / 16;
-    width: 120px; /* o el valor que uses dinámicamente */
-    max-width: 150px;
-    min-width: 80px;
+    max-height: 450px;
     border-radius: 24px;
     flex-shrink: 0;
     overflow: hidden;
