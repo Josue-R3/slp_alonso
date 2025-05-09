@@ -1,14 +1,7 @@
 /* ====== ESTRUCTURA BASE ====== */
 .portfolio-section {
     position: relative;
-    padding: 40px 0;
-    width: 100%;
-}
-
-.portfolio-container {
-    position: relative;
-    max-width: 95%; /* Aumentado para ocupar casi toda la pantalla */
-    width: calc(100% - 20px); /* Margen pequeño */
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -29,14 +22,13 @@
     box-shadow: 0 4px 10px #0000001A; /* Antes: rgba(0,0,0,0.1) */
     cursor: crosshair; /* Cambia el cursor a una mano */
     display: block;
-    
-    /* ANIMACIÓN: Crecimiento suave al pasar el mouse */
     transition: transform 0.3s ease;
 }
 
 /* HOVER: Efecto de escala al pasar el mouse */
 .portfolio-item:hover {
     transform: scale(1.03);
+    transition: transform 0.3s ease;
 }
 
 /* ====== IMÁGENES ====== */
@@ -45,15 +37,9 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    
     /* ANIMACIÓN: Aparición gradual de imágenes */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* Muestra las imágenes cuando están cargadas */
-.images-ready .portfolio-image {
     opacity: 1;
+    transition: opacity 0.3s ease-in-out;
 }
 
 /* ====== SECCIÓN EXPANDIBLE ====== */
@@ -62,7 +48,6 @@
     width: 100%;
     max-height: 800px;
     overflow: hidden;
-    
     /* ANIMACIÓN: Expansión suave con rebote sutil */
     transition: max-height 0.4s ease;
 }
@@ -70,56 +55,37 @@
 /* Estado expandido */
 .portfolio-expandable.expanded {
     max-height: 5000px;
+    counter-reset: item-counter 10; /* Empezamos desde el 11 */
+    padding-bottom: 50px;
+}
+
+/* Asegura que los elementos expandidos mantengan la transición para el hover */
+.portfolio-expandable.expanded .portfolio-item {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Mantener el comportamiento hover en los elementos expandidos */
+.portfolio-expandable.expanded .portfolio-item:hover {
+    transform: scale(1.03);
 }
 
 /* ====== ELEMENTOS OCULTOS Y VISIBLES ====== */
-/* Oculta los elementos que están fuera del contenedor colapsado */
-.portfolio-expandable .portfolio-item:nth-child(n+11) {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+
+/* En lugar de múltiples nth-child, usa una fórmula */
+.portfolio-expandable.expanded .portfolio-item:nth-child(n+11):nth-child(-n+20) {
+    transition-delay: calc((var(--order, 0) * 0.02s) + 0.1s);
 }
 
-/* Anima los elementos cuando se expande el contenedor */
-.portfolio-expandable.expanded .portfolio-item:nth-child(n+11) {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Aplica delays escalonados para crear efecto secuencial */
-.portfolio-expandable.expanded .portfolio-item:nth-child(11) {
-    transition-delay: 0.1s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(12) {
-    transition-delay: 0.12s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(13) {
-    transition-delay: 0.14s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(14) {
-    transition-delay: 0.16s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(15) {
-    transition-delay: 0.18s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(16) {
-    transition-delay: 0.2s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(17) {
-    transition-delay: 0.22s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(18) {
-    transition-delay: 0.24s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(19) {
-    transition-delay: 0.26s;
-}
-.portfolio-expandable.expanded .portfolio-item:nth-child(20) {
-    transition-delay: 0.28s;
-}
 /* Para los elementos restantes, usa un delay consistente */
 .portfolio-expandable.expanded .portfolio-item:nth-child(n+21) {
     transition-delay: 0.3s;
+}
+
+/* Solución elegante */
+.portfolio-expandable.expanded .portfolio-item:nth-child(n+11) {
+    counter-increment: item-counter;
+    --delay: calc((counter(item-counter) - 10) * 0.02s + 0.1s);
+    transition-delay: var(--delay);
 }
 
 /* ====== BOTÓN "VER MÁS" Y SU OVERLAY ====== */
@@ -134,7 +100,6 @@
     justify-content: center;
     align-items: flex-end;
     pointer-events: none; /* Permite hacer clic a través del overlay */
-    
     /* Gradiente de transparente a blanco */
     background: linear-gradient(to bottom, #FFFFFF00, #FFFFFF);
     z-index: 2;
@@ -156,7 +121,6 @@
     cursor: pointer;
     box-shadow: 0 2px 5px #00000033; /* Antes: rgba(0,0,0,0.2) */
     z-index: 3;
-    
     /* ANIMACIÓN: Crecimiento y cambio de color al pasar el mouse */
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
                 background-color 0.3s ease;
@@ -185,6 +149,7 @@
                 background-color 0.3s ease;
 }
 
+
 /* Mostrar botón cuando está expandido */
 .portfolio-expandable.expanded ~ .portfolio-collapse-btn {
     display: block;
@@ -212,7 +177,7 @@
 /* ====== RESPONSIVE ====== */
 @media (max-width: 1200px) {
     .lg-react-element {
-        grid-template-columns: repeat(4, 1fr); /* 4 elementos por fila en pantallas medianas */
+        grid-template-columns: repeat(5, 1fr); /* 5 elementos por fila en pantallas medianas */
     }
 }
 

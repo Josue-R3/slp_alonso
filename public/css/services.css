@@ -1,118 +1,30 @@
 /* Estilos para la sección de servicios */
 .services-section {
-    /* Fondo negro como en el diseño */
-    background-color: #000;
-    /* Padding para espaciado interno */
-    padding: 4rem 2rem;
-    /* Color de texto blanco para contraste */
-    color: #fff;
-    /* Asegurar que el contenido no se desborde */
     overflow: hidden;
-    /* Diseño de flexbox para organizar el encabezado y el carrusel */
     display: flex;
     flex-direction: column;
-    gap: 3rem;
-}
-
-/* Estilos para el encabezado de la sección */
-.services-header {
-    /* Máximo ancho para mantener la legibilidad */
-    max-width: 1200px;
-    /* Centrar el contenido */
+    border-radius: 16px;
     margin: 0 auto;
-    /* Ancho completo */
-    width: 100%;
-    /* Diseño de grid para posicionar el título, texto y enlace */
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1.5rem;
 }
 
-/* Estilos para el título principal */
-.services-header h2 {
-    /* Tamaño grande para el título */
-    font-size: 3rem;
-    /* Peso de fuente en negrita */
-    font-weight: 700;
-    /* Margen inferior para separación */
-    margin-bottom: 1rem;
-    /* Ocupar toda la fila en el grid */
-    grid-column: 1 / -1;
-}
-
-/* Estilos para el párrafo descriptivo */
-.services-header p {
-    /* Tamaño de fuente para el párrafo */
-    font-size: 1rem;
-    /* Línea de altura para mejor legibilidad */
-    line-height: 1.6;
-    /* Opacidad reducida para jerarquía visual */
-    opacity: 0.8;
-    /* Ancho máximo para controlar la longitud de línea */
-    max-width: 600px;
-    /* Alinear a la izquierda en el grid */
-    grid-column: 1;
-}
-
-/* Estilos para el enlace "MORE SERVICES" */
-.more-services-link {
-    /* Color de texto blanco */
-    color: #fff;
-    /* Sin subrayado */
-    text-decoration: none;
-    /* Tamaño de fuente */
-    font-size: 1rem;
-    /* Peso de fuente en negrita */
-    font-weight: 600;
-    /* Transición suave para efectos hover */
-    transition: opacity 0.3s ease;
-    /* Alinear a la derecha en el grid */
-    grid-column: 2;
-    /* Alinear verticalmente */
-    align-self: center;
-    /* Mostrar como flex para alinear el texto y la flecha */
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Efecto hover para el enlace */
-.more-services-link:hover {
-    /* Reducir opacidad al pasar el cursor */
-    opacity: 0.8;
-}
-
-/* Estilo para la flecha del enlace */
-.arrow {
-    /* Tamaño ligeramente mayor */
-    font-size: 1.2rem;
+.services-carousel {
+    border-radius: 12px;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
 }
 
 /* Contenedor del carrusel continuo */
 .continuous-carousel-container {
-    /* Ancho máximo */
-    max-width: 1200px;
-    /* Centrar horizontalmente */
-    margin: 0 auto;
-    /* Ancho completo */
-    width: 100%;
-    /* Ocultar el desbordamiento */
     overflow: hidden;
-    /* Posición relativa */
     position: relative;
 }
 
 /* Pista del carrusel continuo */
 .continuous-carousel-track {
-    /* Mostrar tarjetas en fila */
     display: flex;
-    /* Espacio entre tarjetas */
     gap: 16px;
-    /* Padding para que las tarjetas no toquen los bordes */
     padding: 1rem 0;
-    /* Optimizar rendimiento */
     will-change: transform;
-    /* Preparar para animación */
     transform: translateX(0);
 }
 
@@ -133,115 +45,33 @@
     }
 
     100% {
-        /* Mover exactamente la longitud de los servicios originales */
         transform: translateX(calc(-1 * var(--card-width) * 5 - 16px * 5));
     }
 }
 
 /* Estilos para las tarjetas de servicio */
 .service-card {
-    /* Altura fija para todas las tarjetas */
-    height: 450px;
-    /* Bordes redondeados */
-    border-radius: 8px;
-    /* Evitar que las tarjetas se encogan */
+    aspect-ratio: 9 / 16;
+    width: 120px; /* o el valor que uses dinámicamente */
+    max-width: 150px;
+    min-width: 80px;
+    border-radius: 24px;
     flex-shrink: 0;
-    /* Overflow hidden para la imagen */
     overflow: hidden;
-    /* Posición relativa para el contenido absoluto */
     position: relative;
-    /* Transición suave para efectos hover */
     transition: transform 0.3s ease;
+    background: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 /* Efecto hover para las tarjetas */
 .service-card:hover {
-    /* Escalar ligeramente al pasar el cursor */
     transform: translateY(-5px);
 }
-
-/* Contenedor de la imagen */
-.card-image-container {
-    /* Posición relativa para el overlay */
-    position: relative;
-    /* Altura completa */
-    height: 100%;
-    /* Ancho completo */
-    width: 100%;
-}
-
-/* Estilo para la imagen */
-.card-image {
-    /* Cubrir todo el contenedor */
-    object-fit: cover;
-    /* Altura y ancho completos */
-    width: 100%;
-    height: 100%;
-}
-
-/* Overlay oscuro sobre la imagen */
-.image-overlay {
-    /* Posición absoluta sobre la imagen */
-    position: absolute;
-    /* Cubrir toda la imagen */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Gradiente oscuro de abajo hacia arriba */
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
-}
-
-/* Contenido de texto de la tarjeta */
-.card-content {
-    /* Posición absoluta sobre la imagen */
-    position: absolute;
-    /* Colocar en la parte inferior */
-    bottom: 0;
-    left: 0;
-    /* Ancho completo */
-    width: 100%;
-    /* Padding para separación */
-    padding: 1.5rem;
-    /* Espacio entre elementos */
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-/* Título de la tarjeta */
-.card-content h3 {
-    /* Tamaño de fuente */
-    font-size: 1.5rem;
-    /* Peso de fuente en negrita */
-    font-weight: 700;
-    /* Margen inferior */
-    margin-bottom: 0.5rem;
-    /* Transición para el cambio de color */
-    transition: color 0.3s ease;
-    /* Sombra de texto para mejorar legibilidad */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-}
-
-/* Descripción de la tarjeta */
-.card-content p {
-    /* Tamaño de fuente */
-    font-size: 0.9rem;
-    /* Altura de línea */
-    line-height: 1.5;
-    /* Transición para el cambio de color */
-    transition: color 0.3s ease;
-    /* Sombra de texto para mejorar legibilidad */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-}
-
 /* Media queries para responsividad */
 @media (max-width: 1024px) {
-
-    /* Ajustes para pantallas medianas */
-    .services-header h2 {
-        font-size: 2.5rem;
-    }
 
     .service-card {
         height: 400px;
@@ -250,28 +80,12 @@
 
 @media (max-width: 768px) {
 
-    /* Ajustes para tablets */
-    .services-header {
-        grid-template-columns: 1fr;
-    }
-
-    .more-services-link {
-        grid-column: 1;
-        justify-self: flex-start;
-        margin-top: 1rem;
-    }
-
     .services-section {
         padding: 3rem 1.5rem;
     }
 }
 
 @media (max-width: 640px) {
-
-    /* Ajustes para móviles */
-    .services-header h2 {
-        font-size: 2rem;
-    }
 
     .service-card {
         height: 350px;
@@ -281,7 +95,4 @@
         padding: 2rem 1rem;
     }
 
-    .card-content h3 {
-        font-size: 1.2rem;
-    }
 }
