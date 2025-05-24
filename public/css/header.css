@@ -1,47 +1,87 @@
-/* 📌 Header General */
+/* Base del encabezado */
 .header {
-    z-index: 9;
-    width: 100%;
-    height: 10vh;
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid red;
+  display: flex;
+  align-self: center;
+  padding: 1rem 1.5rem;
+  justify-content: space-between;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  position: sticky;
 }
 
-/* 📌 Menú Hamburguesa + Texto */
-.header-menu {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+/* Logo con contenedor rojo */
+.header-logo{
+  display: flex;
+  align-self: start;
+  gap: 0.5rem;
+  background-color: #ff3333;
+
+}
+
+/* Navegación de escritorio con texto más oscuro para el fondo claro */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background-color: rosybrown;
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  color: #333333; /* Color oscuro para contraste con fondo claro */
+  text-decoration: none;
+  font-weight: 500; /* Un poco más de peso visual */
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #ff3333; /* Color rojo al hacer hover */
+}
+
+/* Versión móvil - botón */
+.header-menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
 }
 
 .header-menu-icon {
-    width: 24px;
-    height: 24px;
-    color: black;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #333333; /* Color oscuro para contraste */
 }
 
-.header-menu-text {
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    color: black;
+/* Menú móvil desplegable */
+.header-nav-mobile {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95); /* Fondo claro consistente */
+  padding: 1rem;
+  gap: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 📌 Logo */
-.header-logo {
-    font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: black;
+.header-nav-mobile.open {
+  display: flex;
 }
 
-/* 📌 Icono de Búsqueda */
-.header-search {
-    width: 24px;
-    height: 24px;
-    color: black;
+.nav-link-mobile {
+  font-size: 1rem;
+  color: #333333;
+  text-decoration: none;
+  padding: 0.5rem;
+  width: 100%;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.nav-link-mobile:hover {
+  color: #ff3333; /* Color rojo al hover */
 }

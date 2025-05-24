@@ -6,22 +6,23 @@
 }
 
 /* ====== GRID DE IMÁGENES ====== */
-/* Define la organización en cuadrícula de las imágenes */
+/* Cambia el grid por columnas tipo masonry */
 .lg-react-element {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Cambiado para tener 5 elementos por fila */
-    grid-gap: 15px; /* Espaciado reducido para acomodar más elementos */
+    column-count: 5;
+    column-gap: 15px;
+    width: 100%;
     margin-bottom: 30px;
 }
 
 /* ====== CADA ELEMENTO DE LA GALERÍA ====== */
 .portfolio-item {
     position: relative;
-    border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 10px #0000001A; /* Antes: rgba(0,0,0,0.1) */
     cursor: crosshair; /* Cambia el cursor a una mano */
     display: block;
+    break-inside: avoid;
+    margin-bottom: 15px;
     transition: transform 0.3s ease;
 }
 
@@ -107,6 +108,12 @@
     transition: opacity 0.4s ease;
 }
 
+/* Ocultar SOLO EL FONDO del overlay cuando el contenedor está expandido */
+.portfolio-expandable.expanded + .portfolio-toggle-overlay {
+    background: transparent; /* Elimina el gradiente de fondo */
+    pointer-events: auto; /* Permite interacción con el botón */
+}
+
 /* Botón "Ver más" */
 .portfolio-toggle-btn {
     pointer-events: auto; /* Permite hacer clic en el botón */
@@ -130,6 +137,7 @@
 .portfolio-toggle-btn:hover {
     background-color: #9300FF;
     transform: scale(1.05);
+    border: none;
 }
 
 /* Botón "Ver menos" */
