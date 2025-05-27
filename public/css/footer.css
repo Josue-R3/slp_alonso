@@ -1,149 +1,97 @@
-/* Footer optimizado */
+/* Footer Styles */
 .footer {
-  background-color: #ffffff;
-  color: #333333;
-  padding: 3rem 0 1.5rem;
-  border-top: 1px solid #eeeeee;
-  font-family: "Helvetica Neue", Arial, sans-serif;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 0 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* Logo central */
-.footer-logo {
-  margin-bottom: 1.5rem;
-}
-
-.logo-link {
-  color: #000000;
-  font-size: 1.8rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-decoration: none;
-}
-
-/* Navegación */
-.footer-nav {
-  display: flex;
-  gap: 2.5rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.footer-link {
-  color: #333333;
-  font-size: 0.7rem;
-  text-decoration: none;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-  color: #888888;
-}
-
-/* Contacto */
-.footer-contact-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-}
-
-.contact-link {
-  color: #333333;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color 0.3s ease;
-}
-
-.contact-link:hover {
-  color: #888888;
-}
-
-.contact-divider {
-  color: #cccccc;
-  margin: 0 0.5rem;
-}
-
-/* Botones flat con animación de borde */
-.flat-button {
+/* Contenedor principal con borde superior y posición relativa */
+.responsive-footer {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  color: #333333;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  z-index: 1;
+  border-top: 1px solid #00000033;
+  padding: 1.5rem 1rem 1rem 1rem;
 }
 
-.flat-button::before {
-  content: "";
+/* Elemento de texto sobre la línea divisoria - solo derecha */
+.border-text-right {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background-color: #9300ff;
-  transition: width 0.3s ease;
-  z-index: -1;
-}
-
-.flat-button:hover::before {
-  width: 100%;
-}
-
-.flat-button:hover {
-  color: white;
-}
-
-.button-icon {
-  color: #9300ff;
-  transition: color 0.3s ease;
-}
-
-.flat-button:hover .button-icon {
-  color: white;
-}
-
-.button-text {
-  transition: color 0.3s ease;
-}
-
-/* Redes sociales con efecto hover */
-.footer-social-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.social-text {
+  top: -0.5rem;
+  right: 2rem;
+  background-color: white;
+  padding: 0 1rem;
   font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 1px;
   color: #333333;
-  margin-bottom: 0.8rem;
+  white-space: nowrap; /* Evita que el texto se parta */
 }
 
+/* Layout Desktop - Visible solo en desktop */
+.desktop-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Layout Mobile - Oculto por defecto */
+.mobile-layout {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Info izquierda */
+.footer-info-wrapper {
+  flex: 1;
+  text-align: left;
+}
+
+.footer-text {
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+/* Texto mobile con líneas separadas */
+.mobile-text {
+  text-align: center;
+  line-height: 1.6;
+}
+
+.copyright-line {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.developer-line {
+  display: block;
+}
+
+/* Redes sociales */
+.footer-social-wrapper {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.mobile-social {
+  justify-content: center;
+}
+
+/* Estilos de iconos sociales - Desktop */
 .social-icons {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Estilos de iconos sociales - Mobile Grid */
+.mobile-layout .social-icons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  justify-items: center;
+  max-width: 200px;
 }
 
 .social-icon {
@@ -156,6 +104,7 @@
   background-color: #f9f9f9;
   color: #333333;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .social-icon:hover {
@@ -165,35 +114,94 @@
   box-shadow: 0 4px 8px rgba(147, 0, 255, 0.2);
 }
 
-/* Copyright */
-.footer-bottom {
-  margin-top: 0.5rem;
+/* Link personalizado */
+.footer-link {
+  font-weight: bold;
+  color: #9300ff;
+  text-decoration: none;
 }
 
-.footer-copyright {
-  color: #888888;
-  font-size: 0.7rem;
-  margin: 0;
+.footer-link:hover {
+  color: #5e00a3;
+  text-decoration: underline;
 }
 
-/* Media queries para responsive */
-@media (min-width: 768px) {
-  .footer-container {
-    align-items: center;
-  }
-}
-
-@media (max-width: 767px) {
-  .footer-nav {
-    gap: 1.5rem;
+/* Media query específica para tablets en portrait (como 820x1110) */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .responsive-footer {
+    padding: 1.5rem 1rem 0.8rem 1rem; /* Padding más compacto para tablets */
   }
 
-  .contact-divider {
+  .footer-text {
+    line-height: 1.6;
+  }
+
+  .separator {
     display: none;
   }
 
-  .footer-contact-row {
-    flex-direction: column;
-    gap: 0.5rem;
+  .developer-text {
+    display: block;
+    margin-top: 0.5rem;
   }
 }
+
+/* Responsive: Cambio completo de layout */
+@media (max-width: 767px) {
+  .responsive-footer {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .border-text-right {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.65rem;
+    padding: 0 0.8rem;
+  }
+
+  /* Ocultar layout desktop */
+  .desktop-layout {
+    display: none;
+  }
+
+  /* Mostrar layout mobile */
+  .mobile-layout {
+    display: flex;
+  }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .mobile-layout .social-icons {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 160px;
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .border-text-right {
+    font-size: 0.6rem;
+    padding: 0 0.6rem;
+  }
+}
+
+/* Ajuste para pantallas extra pequeñas */
+@media (max-width: 360px) {
+  .border-text-right {
+    font-size: 0.55rem;
+    padding: 0 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .mobile-layout .social-icons {
+    max-width: 140px;
+  }
+}
+
+
+/* TODO: PENDIENTE REVISAR EL ESPACIADO DEL RESPONSIVE */
