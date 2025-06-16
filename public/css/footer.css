@@ -6,7 +6,7 @@
 /* Contenedor principal con borde superior y posición relativa */
 .responsive-footer {
   position: relative;
-  border-top: 1px solid #00000033;
+  border-top: 1px solid #00000033; /*#DDDDDD*/
   padding: 1.5rem 1rem 1rem 1rem;
 }
 
@@ -117,13 +117,12 @@
 /* Link personalizado */
 .footer-link {
   font-weight: bold;
-  color: #9300ff;
   text-decoration: none;
 }
 
 .footer-link:hover {
   color: #5e00a3;
-  text-decoration: underline;
+  transition: 0.5s ease;
 }
 
 /* Media query específica para tablets en portrait (como 820x1110) */

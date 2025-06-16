@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import Link from "next/link";
 import "../../public/css/header.css";
-import LogoAlonso from "../../public/images/brand/Logo01.avif";
+import LogoAlonso from "../../public/images/brand/Logo01.webp";
 
 const Header = () => {
   // Estado para detectar si es móvil o desktop
