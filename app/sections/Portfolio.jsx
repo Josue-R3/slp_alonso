@@ -66,6 +66,7 @@ const Portfolio = () => {
                   alt={item.title || `Portfolio item ${index + 1}`}
                   className="portfolio-image"
                   onLoad={handleImageLoad}
+                  loading="lazy"
                 />
               </a>
             ))}
