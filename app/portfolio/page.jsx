@@ -49,7 +49,7 @@ const Portfolio = () => {
 
   return (
     <section className="portfolio-section">
-      <div className={`portfolio-expandable ${isExpanded ? "expanded" : ""}`}>
+      <div className="portfolio-gallery">
         {items.length > 0 && (
           <LightGallery
             ref={lightGalleryRef}
@@ -58,6 +58,7 @@ const Portfolio = () => {
             thumbnail={true}
             zoom={true}
             download={false}
+            hideScrollbar={true}
           >
             {items.map((item, index) => (
               <a key={index} data-src={item.src} className="portfolio-item">
@@ -73,14 +74,6 @@ const Portfolio = () => {
           </LightGallery>
         )}
       </div>
-      {/* Mantén el overlay al mismo nivel que el expandable */}
-      {items.length > 6 && (
-        <div className="portfolio-toggle-overlay">
-          <button className="portfolio-toggle-btn" onClick={toggleExpand}>
-            {isExpanded ? "Ver menos" : "Ver más"}
-          </button>
-        </div>
-      )}
     </section>
   );
 };

@@ -37,7 +37,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="footer-link"
                 >
-                  Josue Ruiz
+                  Josue RZS
                 </Link>
               </span>
             </p>

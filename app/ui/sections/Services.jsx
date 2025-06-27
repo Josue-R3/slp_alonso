@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@/public/css/services.css";
 
-import CarruselData from "../../public/data/carrusel.json";
+import CarruselData from "../../../public/data/carrusel.json";
 
 export default function ServicesCarousel() {
   const carouselRef = useRef(null);
