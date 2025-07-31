@@ -8,7 +8,7 @@ import {
   FaLinkedin,
   FaWhatsapp,
 } from "react-icons/fa";
-import "../../public/css/footer.css";
+import "../styles/footer.css";
 import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
@@ -32,9 +32,8 @@ const Footer = () => {
               <span className="developer-text">
                 Desarrollado por{" "}
                 <Link
-                  href="https://josuedev.vercel.app/"
+                  href="https://josuerzs.dev/"
                   target="_blank"
-                  rel="noopener noreferrer"
                   className="footer-link"
                 >
                   Josue RZS

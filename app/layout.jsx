@@ -1,11 +1,11 @@
 import * as React from "react";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
-import "../public/css/globals.css";
+import "./styles/globals.css";
 
 export const metadata = {
   title: "Alonso Vasquez",
-  description: "Portafolio y proyectos de Alonso Vasquez.",
+  description: "Portafolio de Alonso Vasquez.",
 };
 
 export default function RootLayout({ children }) {

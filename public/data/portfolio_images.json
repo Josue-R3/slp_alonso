@@ -126,12 +126,6 @@
     "type": "image"
   },
   {
-    "src": "/images/portfolio/DSC07799.webp",
-    "title": "DSC07799",
-    "categories": ["productos"],
-    "type": "image"
-  },
-  {
     "src": "/images/portfolio/DSC07801.webp",
     "title": "DSC07801",
     "categories": ["productos"],
@@ -152,12 +146,6 @@
   {
     "src": "/images/portfolio/DSC07868.webp",
     "title": "DSC07868",
-    "categories": [],
-    "type": "image"
-  },
-  {
-    "src": "/images/portfolio/DSC07880.webp",
-    "title": "DSC07880",
     "categories": [],
     "type": "image"
   },
@@ -260,6 +248,48 @@
   {
     "src": "/images/portfolio/MG9090.webp",
     "title": "MG9090",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/images/portfolio/DSC00172.webp",
+    "title": "DSC00172",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/images/portfolio/DSC00173.webp",
+    "title": "DSC00173",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/images/portfolio/DSC00174.webp",
+    "title": "DSC00174",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/images/portfolio/DSC00175.webp",
+    "title": "DSC00175",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/images/portfolio/DSC00176.webp",
+    "title": "DSC00176",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/images/portfolio/DSC00180.webp",
+    "title": "DSC00180",
+    "categories": [],
+    "type": "image"
+  },
+  {
+    "src": "/images/portfolio/DSC00183.webp",
+    "title": "DSC00183",
     "categories": [],
     "type": "image"
   }

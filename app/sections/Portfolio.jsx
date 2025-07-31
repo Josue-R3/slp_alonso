@@ -7,8 +7,8 @@ import "lightgallery/css/lg-thumbnail.css";
 import "lightgallery/css/lg-zoom.css";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
-import PortfolioData from "@/public/data/portfolio.json";
-import "@/public/css/portfolio.css";
+import PortfolioData from "../../public/data/portfolio_images.json";
+import "../styles/portfolio.css";
 
 const Portfolio = () => {
   const lightGalleryRef = useRef(null);
@@ -49,7 +49,7 @@ const Portfolio = () => {
 
   return (
     <section className="portfolio-section">
-      <div className="portfolio-gallery">
+      <div className={`portfolio-expandable ${isExpanded ? "expanded" : ""}`}>
         {items.length > 0 && (
           <LightGallery
             ref={lightGalleryRef}
@@ -58,7 +58,6 @@ const Portfolio = () => {
             thumbnail={true}
             zoom={true}
             download={false}
-            hideScrollbar={true}
           >
             {items.map((item, index) => (
               <a key={index} data-src={item.src} className="portfolio-item">
@@ -67,13 +66,20 @@ const Portfolio = () => {
                   alt={item.title || `Portfolio item ${index + 1}`}
                   className="portfolio-image"
                   onLoad={handleImageLoad}
-                  loading="lazy"
                 />
               </a>
             ))}
           </LightGallery>
         )}
       </div>
+      {/* Mantén el overlay al mismo nivel que el expandable */}
+      {items.length > 6 && (
+        <div className="portfolio-toggle-overlay">
+          <button className="portfolio-toggle-btn" onClick={toggleExpand}>
+            {isExpanded ? "Ver menos" : "Ver más"}
+          </button>
+        </div>
+      )}
     </section>
   );
 };
