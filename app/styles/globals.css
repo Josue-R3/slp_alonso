@@ -2,11 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-    background-color: black;
+html {
+  background-color: black;
 }
 
 main {
-    padding: 12rem 6rem;
+  padding: 12rem 6rem 3rem 6rem; /* top, right, bottom, left */
 }
-

@@ -40,11 +40,7 @@ const Portfolio = () => {
   }, [items.length]);
 
   const toggleExpand = useCallback(() => {
-    const currentScrollPos = window.scrollY;
     setIsExpanded((prev) => !prev);
-    requestAnimationFrame(() => {
-      window.scrollTo(0, currentScrollPos);
-    });
   }, []);
 
   return (

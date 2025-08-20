@@ -6,8 +6,8 @@ import Services from "./sections/Services2";
 export default function Home() {
   return (
     <>
-      <Portfolio />
       <Services />
+      <Portfolio />
     </>
   );
 }
